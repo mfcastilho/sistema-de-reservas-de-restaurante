@@ -6,7 +6,7 @@ const verifyLoginPassword = async (req, res, next)=>{
 
     const repo = usersRepository;
 
-    const encryptedPassword = await repo.findOne({ where:{email}, raw:true });
+    const { password: encryptedPassword } = await repo.findOne({ where:{email}, raw:true });
 
     const passwordIsValid = await bcrypt.compare(password, encryptedPassword);
 
