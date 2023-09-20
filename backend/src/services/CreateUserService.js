@@ -1,5 +1,6 @@
 const { usersRepository } = require("../repositories/index");
 const { v4:makeId } = require("uuid");
+const bcrypt = require("bcrypt");
 
 
 
@@ -9,16 +10,18 @@ class CreateUserService {
             const { name, email, password } = userData;
             const repo = usersRepository;
 
-            if(await repo.findOne({where:{email:email}})) throw new Error("Usuário já se encontra cadastrado.");
+            const cryptedPassword = await bcrypt.hash(password, 10);
 
             const newUser = {
                 id: makeId(),
                 name,
                 email,
-                password
+                password: cryptedPassword
             }
 
             await repo.create(newUser);
+
+            delete newUser.password;
 
             return newUser;
             
