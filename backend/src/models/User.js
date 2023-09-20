@@ -22,12 +22,12 @@ module.exports = (sequelize, DataTypes) => {
         timestamps: true
     });
 
-    // User.associate = (models) => {
-    //     User.hasMany(models.Reservation, {
-    //         foreignKey: 'id_user',
-    //         as: 'reservation',
-    //     });
-    // };
+    User.associate = (models) => {
+        User.hasMany(models.Reservation, {
+            foreignKey: 'id_user',
+            as: 'reservation',
+        });
+    };
 
     return User;
 
