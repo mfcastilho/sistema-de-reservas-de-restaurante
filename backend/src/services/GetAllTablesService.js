@@ -4,7 +4,10 @@ class GetAllTables {
     async execute() {
         const repo = tablesRepository;
 
-        const restaurantTables = await repo.findAll({ raw:true });
+        const restaurantTables = await repo.findAll({
+            order: [["table_number", "ASC"]], 
+            raw:true 
+        });
 
         return restaurantTables;
     }
