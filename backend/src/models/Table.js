@@ -12,6 +12,10 @@ module.exports = (sequelize, DataTypes) => {
         capacity: {
             type: DataTypes.INTEGER,
             allowNull: false
+        },
+        is_available: {
+            type: DataTypes.BOOLEAN,
+            allowNull: false
         }
     },{
         tableName: "tables",
