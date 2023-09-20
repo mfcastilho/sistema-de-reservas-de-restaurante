@@ -20,3 +20,5 @@ const verifyToken = (req, res, next)=>{
         return res.status(500).json({error: "Para acessar este recurso um token de autenticação válido deve ser enviado."});
     }
 }
+
+module.exports = verifyToken;
