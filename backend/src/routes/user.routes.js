@@ -1,9 +1,10 @@
 const {  Router } = require("express");
 const userRoutes = Router();
-const { CreateUserController } = require("../controllers/index");
-const { verifyFields } = require("../middlewares/index");
+const { CreateUserController, LoginUserController } = require("../controllers/index");
+const { verifyFields, verifyIfEmailNotExists } = require("../middlewares/index");
 
 
 userRoutes.post("/users", verifyFields, CreateUserController.handle);
+userRoutes.post("/login", verifyIfEmailNotExists, LoginUserController.handle);
 
 module.exports = userRoutes;
