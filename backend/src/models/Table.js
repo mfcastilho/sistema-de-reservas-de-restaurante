@@ -1,6 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-    const Mesa = sequelize.define('Table', {
+    const Table = sequelize.define('Table', {
         id: {
             type: DataTypes.STRING(90),
             primaryKey: true
@@ -18,13 +18,13 @@ module.exports = (sequelize, DataTypes) => {
         timestamps: true
     });
 
-    Mesa.associate = (models) => {
-        Mesa.hasMany(models.Reservation, {
+    Table.associate = (models) => {
+        Table.hasMany(models.Reservation, {
         foreignKey: 'id_table',
         as: 'reservation',
         });
     };
 
-    return Mesa;
-    
+    return Table;
+
 };
