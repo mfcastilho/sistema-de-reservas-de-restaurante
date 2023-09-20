@@ -1,6 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const User = sequelize.define('User', {
+    const User = sequelize.define('User', {
         id: {
             type: DataTypes.STRING(90),
             primaryKey: true
@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
     },{
         tableName: "users",
         timestamps: true
-   });
+    });
 
     // User.associate = (models) => {
     //     User.hasMany(models.Reservation, {
