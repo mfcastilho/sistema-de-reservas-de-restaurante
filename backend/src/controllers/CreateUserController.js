@@ -2,15 +2,18 @@ const { CreateUserService } = require("../services/index");
 
 class CreateUserController {
     async handle(req, res) {
-        const { name, email, password } = req.body;
+        try {
+            const { name, email, password } = req.body;
 
-        const service = new CreateUserService();
+            const service = new CreateUserService();
 
-        const result = await service.execute({ name, email, password });
+            const userCreated = await service.execute({ name, email, password });
 
-        if(result instanceof Error) return res.status(400).json({error: result.message});
+            return res.status(201).json(userCreated);
 
-        return res.status(201).json(result);
+        } catch (error) {
+            return res.status(500).json({error: "Erro interno do servidor."});
+        }
     }
 }
 
