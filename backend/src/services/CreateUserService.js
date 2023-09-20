@@ -19,6 +19,8 @@ class CreateUserService {
             }
 
             await repo.create(newUser);
+
+            return newUser;
             
         } catch (error) {
             throw new Error("Erro interno do servidor.");
