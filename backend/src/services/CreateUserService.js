@@ -7,7 +7,7 @@ const bcrypt = require("bcrypt");
 class CreateUserService {
     async execute(userData) {
         try {
-            const { name, email, password } = userData;
+            const { name, email, password, role } = userData;
             const repo = usersRepository;
 
             const cryptedPassword = await bcrypt.hash(password, 10);
@@ -16,7 +16,8 @@ class CreateUserService {
                 id: makeId(),
                 name,
                 email,
-                password: cryptedPassword
+                password: cryptedPassword,
+                role
             }
 
             await repo.create(newUser);
