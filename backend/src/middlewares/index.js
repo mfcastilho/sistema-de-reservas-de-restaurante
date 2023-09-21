@@ -4,8 +4,8 @@ const verifyEmail = require("./verifyEmail");
 const verifyLoginPassword = require("./verifyLoginPassword");
 const verifyToken = require("./verifyToken");
 const verifyAdminRegistration = require("./verifyAdminRegistration");
-
-
+const checkTableAvailability = require("./checkTableAvailability");
+const validationReservation = require("./validationReservation");
 
 module.exports = {
     verifyFields,
@@ -13,5 +13,7 @@ module.exports = {
     verifyEmail,
     verifyLoginPassword,
     verifyToken,
-    verifyAdminRegistration
+    verifyAdminRegistration,
+    checkTableAvailability,
+    validationReservation
 }
