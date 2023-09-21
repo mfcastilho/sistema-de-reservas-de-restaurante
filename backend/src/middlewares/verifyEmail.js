@@ -6,9 +6,9 @@ const verifyEmail = async (req, res, next)=>{
 
     const repo = usersRepository;
 
-    const emailExists = await repo.findOne({ where: {email} });
+    const userExists = await repo.findOne({ where: {email}, raw:true });
 
-    if(emailExists) return res.status(409).json({error: "Já existe usuário cadastrado com o e-mail informado."});
+    if(userExists) return res.status(409).json({error: "Já existe usuário cadastrado com o e-mail informado."});
 
     return next();
 }
