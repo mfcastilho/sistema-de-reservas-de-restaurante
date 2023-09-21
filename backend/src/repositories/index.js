@@ -1,6 +1,6 @@
-const reservationsRepository = require("../repositories/reservations.repository");
-const tablesRepository = require("../repositories/tables.repository");
-const usersRepository = require("../repositories/users.repository");
+const reservationsRepository = require("./reservations.repository");
+const tablesRepository = require("./tables.repository");
+const usersRepository = require("./users.repository");
 
 
 module.exports = {
