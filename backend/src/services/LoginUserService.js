@@ -10,7 +10,7 @@ class LoginUserService {
 
             const user = await repo.findOne({where: {email}, raw: true});
 
-            const token = jwt.sign({id: user.id}, process.env.JWT_SECRET_KEY, {expiresIn: process.env.JWT_EXPIRES_IN});
+            const token = jwt.sign({id: user.id, role: user.role}, process.env.JWT_SECRET_KEY, {expiresIn: process.env.JWT_EXPIRES_IN});
 
             const { password, ...userLogged } = user;
 
