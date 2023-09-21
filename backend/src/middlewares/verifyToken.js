@@ -11,7 +11,7 @@ const verifyToken = (req, res, next)=>{
 
         const token = authorization.split(" ")[1];
 
-        const decoded = jwt.verify(token, process.env.JWT_SECRET-KEY);
+        const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY);
 
         res.locals.decoded = decoded;
 
