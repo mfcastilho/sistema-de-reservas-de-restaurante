@@ -13,7 +13,7 @@ const verifyFields = (req, res, next)=>{
         return next();
     }
 
-    if(req.url == "/users"){
+    if(req.url == "/register/client" || req.url == "/register/admin"){
         const { name, email, password } = req.body;
 
         if(!name || !email || !password) return res.status(400).json({error: "Todos os campos são obrigatórios."});
