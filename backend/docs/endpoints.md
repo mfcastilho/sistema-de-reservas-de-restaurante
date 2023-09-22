@@ -60,12 +60,6 @@
 - **Endpoint:** `/api/all-reservations`
 - **Função:** Recuperar todas as reservas registradas no sistema para exibição no painel administrativo, possivelmente em uma tabela.
 
-### Endpoint de Listagem de Reservas por Hora:
-- **Método:** GET
-- **Descrição:** Retorna a lista de reservas para uma hora específica.
-- **Endpoint:** `/api/reservas/hora/:hora`
-- **Função:** Recuperar as reservas para a hora especificada.
-
 ### Endpoint para Excluir Reserva (para o Painel Administrativo):
 - **Método:** DELETE
 - **Descrição:** Permite que os administradores excluam uma reserva existente.
