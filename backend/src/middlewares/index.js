@@ -6,6 +6,7 @@ const verifyToken = require("./verifyToken");
 const verifyAdminRegistration = require("./verifyAdminRegistration");
 const checkTableAvailability = require("./checkTableAvailability");
 const validationReservation = require("./validationReservation");
+const verifyIfIsAdmin = require("./verifyIfIsAdmin");
 
 module.exports = {
     verifyFields,
@@ -15,5 +16,6 @@ module.exports = {
     verifyToken,
     verifyAdminRegistration,
     checkTableAvailability,
-    validationReservation
+    validationReservation,
+    verifyIfIsAdmin
 }
