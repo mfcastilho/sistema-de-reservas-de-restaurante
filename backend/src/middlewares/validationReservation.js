@@ -1,6 +1,6 @@
 const { isWithinInterval, isSunday } = require('date-fns');
 
-async function validateReservationMiddleware(req, res, next) {
+const validateReservation = async (req, res, next)=> {
     const { date, hour } = req.body; 
 
     const dateHourReservation = new Date(`${date}T${hour}:00`);
@@ -25,4 +25,4 @@ async function validateReservationMiddleware(req, res, next) {
     return next();
 }
 
-module.exports = validateReservationMiddleware;
+module.exports = validateReservation;
