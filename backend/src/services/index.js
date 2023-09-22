@@ -3,7 +3,7 @@ const GetAllTablesService = require("./GetAllTablesService");
 const LoginUserService = require("./LoginUserService");
 const CreateAdminService = require("./CreateAdminService");
 const CreateReservationService = require("./CreateReservationService");
-
+const GetAllUserReservationsService = require("../services/GetAllUserReservationsService")
 
 
 module.exports = {
@@ -11,5 +11,6 @@ module.exports = {
     LoginUserService,
     GetAllTablesService,
     CreateAdminService,
-    CreateReservationService
+    CreateReservationService,
+    GetAllUserReservationsService
 }
