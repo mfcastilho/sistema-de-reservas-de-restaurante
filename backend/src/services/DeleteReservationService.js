@@ -1,4 +1,4 @@
-const { reservationsRepository, tablesRepository: Table, usersRepository: User } = require("../repositories/index");
+const { reservationsRepository } = require("../repositories/index");
 
 
 class DeleteReservationService {
@@ -8,7 +8,7 @@ class DeleteReservationService {
         const repo = reservationsRepository;
 
         const rowsDeleted = await repo.destroy({ where: {id} });
-        console.log(rowsDeleted);
+
         if (rowsDeleted < 1) return new Error("Reserva não encontrada.");
 
         return "Reserva excluída com sucesso.";
