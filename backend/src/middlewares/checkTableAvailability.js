@@ -1,6 +1,6 @@
 const { reservationsRepository, tablesRepository } = require("../repositories/index");
 
-async function checkTableAvailabilityMiddleware(req, res, next) {
+async function checkTableAvailability(req, res, next) {
 
     try {
 
@@ -13,7 +13,7 @@ async function checkTableAvailabilityMiddleware(req, res, next) {
 
         const table = await repoTables.findOne({where: {table_number}, raw:true});
 
-        if(!table) return res.status(404).json({error: "Não existe no nosso sistema a mesa de número ${table_number}."});
+        if(!table) return res.status(404).json({error: `Não existe no nosso sistema a mesa de número ${table_number}.`});
         
         const conflict = await repo.findOne({
         where: {
@@ -22,7 +22,7 @@ async function checkTableAvailabilityMiddleware(req, res, next) {
         },
         });
 
-        if (conflict) return res.status(400).json({error: "A mesa ${table_number} já está reservada para este horário."});
+        if (conflict) return res.status(400).json({error: `A mesa ${table_number} já está reservada para este horário.`});
 
         req.table_id = table.id;
         
@@ -33,4 +33,4 @@ async function checkTableAvailabilityMiddleware(req, res, next) {
     }
 }
 
-module.exports = checkTableAvailabilityMiddleware;
+module.exports = checkTableAvailability;
