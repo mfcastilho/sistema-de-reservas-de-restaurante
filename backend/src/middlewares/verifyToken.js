@@ -16,6 +16,7 @@ const verifyToken = (req, res, next)=>{
         res.locals.decoded = decoded;
 
         return next();
+        
     } catch (error) {
         return res.status(500).json({error: "Para acessar este recurso um token de autenticação válido deve ser enviado."});
     }

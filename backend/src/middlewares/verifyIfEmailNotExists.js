@@ -2,14 +2,20 @@ const { usersRepository } = require("../repositories");
 
 const verifyIfEmailNotExists = async (req, res, next)=>{
 
-    const { email } = req.body;
-    const repo = usersRepository;
+    try {
+        
+        const { email } = req.body;
+        const repo = usersRepository;
 
-    const emailExists = await repo.findOne({where:{email:email}, raw:true});
+        const emailExists = await repo.findOne({where:{email:email}, raw:true});
 
-    if(!emailExists) return res.status(404).json({error: "Email e/ou senha incorretos."});
+        if(!emailExists) return res.status(404).json({error: "Email e/ou senha incorretos."});
 
-    return next();
+        return next();
+
+    } catch (error) {
+        return res.status(500).json({ error: "Erro interno do servidor." });
+    }
     
 }
 

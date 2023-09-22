@@ -3,8 +3,6 @@
 
 const verifyFields = (req, res, next)=>{
 
-    console.log(req.url);
-
     if(req.url == "/login"){
         const { email, password } = req.body;
 

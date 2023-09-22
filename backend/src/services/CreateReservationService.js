@@ -1,5 +1,5 @@
-const { reservationsRepository } = require("../repositories/index");
-const { Table, User } = require("../models");
+const { reservationsRepository, tablesRepository: Table, usersRepository: User } = require("../repositories/index");
+
 const { v4:makeId } = require("uuid");
 
 
@@ -35,12 +35,8 @@ class CreateReservationService {
                 attributes: { exclude: [ "createdAt", "updatedAt" ] },
             })
 
-            console.log(reservationCreated);
-
             return reservationCreated;
-
-            
-            
+    
         } catch (error) {
             throw error;
         }
