@@ -1,15 +1,15 @@
 # REGRAS DE NEGÓCIO – SISTEMA RESTAURANTE
 
 ## Regras de Autenticação:
-- **Sistema de Login:** Os usuários devem ser capazes de criar contas e fazer login no sistema. A autenticação pode ser baseada em tokens JWT ou sessões de autenticação, dependendo da tecnologia escolhida.
+- **Sistema de Login:** Os usuários devem ser capazes de criar contas e fazer login no sistema. A autenticação pode ser baseada em tokens JWT.
 - **Restrições de Acesso:** Apenas usuários autenticados devem ter acesso às funcionalidades de reserva.
 
 ## Regras de Reserva:
 - **Horário de Reserva:** As reservas devem ser permitidas apenas das 18:00 às 23:59, exceto aos domingos.
 - **Validação de Horários Conflituosos:** O sistema deve validar se a mesa está disponível no horário desejado e evitar que duas reservas conflitem no mesmo horário para a mesma mesa.
-- **Capacidade das Mesas:** Certifique-se de que a reserva não exceda a capacidade da mesa.
+- **Capacidade das Mesas(EXTRA):** Certifique-se de que a reserva não exceda a capacidade da mesa.
 - **Cancelamento de Reservas:** Os usuários devem ter a opção de cancelar suas reservas.
-- **Lista de Reservas:** O sistema deve permitir que os usuários vejam suas reservas existentes e as informações relacionadas a elas.
+- **Lista de Reservas do Usuário logado:** O sistema deve permitir que os usuários vejam suas reservas existentes e as informações relacionadas a elas.
 
 ## Regras de Dados:
 - **Banco de Dados Relacional:** Use um banco de dados relacional para armazenar informações sobre mesas e reservas.
