@@ -27,7 +27,7 @@ class CreateUserService {
             return newUser;
             
         } catch (error) {
-            throw new Error("Erro interno do servidor.");
+            throw error;
         }
     }
 }
