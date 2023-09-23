@@ -2,12 +2,14 @@ const request = require("supertest");
 const app = require("../../app");
 const connection = require("../../models/index");
 const truncate = require("./truncate");
+const { User } = require("../../models");
 
 
 
 describe("Create User", ()=>{
 
-    afterAll(()=>{
+    afterAll( async ()=>{
+        await User.destroy({where: {email: "joaquim@email.com"}});
         connection.sequelize.close();
     });
 
