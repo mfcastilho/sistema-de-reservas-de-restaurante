@@ -6,7 +6,7 @@ module.exports = {
   "development": {
     "username": process.env.DEV_DB_USER,
     "password":process.env.DEV_DB_PASS,
-    "database":process.env.DEV_DB_NAME,
+    "database":process.env.NODE_ENV === "test" ? "db_restaurante_test" : process.env.DEV_DB_NAME,
     "host":process.env.DEV_DB_HOST,
     "dialect":process.env.DEV_DB_DIALECT,
     define: {
@@ -15,11 +15,11 @@ module.exports = {
   },
 
   "test": {
-    "username":process.env.TEST_DB_USER,
-    "password":process.env.TEST_DB_PASS,
-    "database":process.env.TEST_DB_NAME,
-    "host":process.env.TEST_DB_HOST,
-    "dialect":process.env.TEST_DB_DIALECT,
+    "username": process.env.DEV_DB_USER,
+    "password":process.env.DEV_DB_PASS,
+    "database":"db_restaurante_test",
+    "host":process.env.DEV_DB_HOST,
+    "dialect":process.env.DEV_DB_DIALECT,
     define: {
         underscored: true,
     },
@@ -37,3 +37,5 @@ module.exports = {
   }
   
 }
+
+
