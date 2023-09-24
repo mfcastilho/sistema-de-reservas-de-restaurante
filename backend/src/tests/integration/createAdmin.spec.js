@@ -11,12 +11,11 @@ describe("Create Admin", ()=>{
         process.env.DATABASE_URL = 'sqlite::memory:';
     
         await sequelize.sync({ force: true });
-      });
+    });
     
-      afterAll(async () => {
-       
+    afterAll(async () => {
         await sequelize.close();
-      });
+    });
 
     it("É possível criar um admnistrador", async ()=>{
         const response = await request(app).post("/api/v1/register/admin").send({
