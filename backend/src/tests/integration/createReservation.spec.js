@@ -33,6 +33,10 @@ describe("Create Reservation", () => {
 
     });
 
+    afterAll(async () => {
+        await sequelize.close();
+    });
+
 
     it('É possível criar uma Reserva', async () => {
         const response = await request(app)
@@ -146,5 +150,21 @@ describe("Create Reservation", () => {
         expect(response.ok).toBeFalsy();
         expect(response.body).toHaveProperty("error");
         expect(response.body.error).toEqual(`A mesa ${1} já está reservada para este horário.`);
+    });
+
+
+    it("Não é possível fazer uma reserva se algum campo estiver vazio", async ()=>{
+        const response = await request(app)
+        .post("/api/v1/reservation")
+        .set('Authorization', `Bearer ${authToken}`) 
+        .send({
+            table_number: 1,
+            date: "",
+            hour: "20:00"
+        });
+
+        expect(response.ok).toBeFalsy();
+        expect(response.body).toHaveProperty("error");
+        expect(response.body.error).toEqual("Todos os campos são obrigatórios.");
     });
 });
