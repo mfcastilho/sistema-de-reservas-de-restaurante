@@ -1,19 +1,22 @@
 const request = require("supertest");
 const app = require("../../app");
-const connection = require("../../models/index");
-const truncate = require("./truncate");
-const { User } = require("../../models");
+const { sequelize } = require("../../models");
 
 describe("Create Admin", ()=>{
+    
 
-    afterAll(async ()=>{
-        await User.destroy({where: {email: "mario@email.com"}});
-        connection.sequelize.close();
-    });
+    beforeAll(async () => {
 
-    beforeEach(async () => {
-        await truncate(connection.sequelize.models);
-    });
+        process.env.NODE_ENV = 'test';
+        process.env.DATABASE_URL = 'sqlite::memory:';
+    
+        await sequelize.sync({ force: true });
+      });
+    
+      afterAll(async () => {
+       
+        await sequelize.close();
+      });
 
     it("É possível criar um admnistrador", async ()=>{
         const response = await request(app).post("/api/v1/register/admin").send({
