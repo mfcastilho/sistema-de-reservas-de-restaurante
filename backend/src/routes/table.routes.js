@@ -2,7 +2,7 @@ const { Router } = require("express");
 const tableRoutes = Router();
 const { GetAllTablesController, CreateTableController } = require("../controllers/index");
 
-const { verifyFields } = require("../middlewares/index");
+const { verifyFields, verifyToken, verifyIfIsAdmin } = require("../middlewares/index");
 
 
 tableRoutes.get("/tables", GetAllTablesController.handle);
