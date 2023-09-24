@@ -14,7 +14,6 @@ describe("Create User", ()=>{
       });
     
       afterAll(async () => {
-        // Feche a conexão com o banco de dados
         await sequelize.close();
       });
     
