@@ -1,7 +1,7 @@
 
 const verifyIfIsAdmin = (req, res, next)=>{
 
-    const role = res.locals.decoded.role;
+    const role = req.decoded.role;
 
     if(role === "client") return res.status(403).json({error: "Acesso negado"});
 
