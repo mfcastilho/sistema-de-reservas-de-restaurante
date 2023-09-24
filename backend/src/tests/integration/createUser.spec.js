@@ -1,21 +1,23 @@
 const request = require("supertest");
 const app = require("../../app");
-const connection = require("../../models/index");
-const truncate = require("./truncate");
-const { User } = require("../../models");
-
+const { sequelize } = require("../../models");
 
 
 describe("Create User", ()=>{
 
-    afterAll( async ()=>{
-        await User.destroy({where: {email: "joaquim@email.com"}});
-        connection.sequelize.close();
-    });
+    beforeAll(async () => {
 
-    beforeEach(async () => {
-        await truncate(connection.sequelize.models);
-    });
+        process.env.NODE_ENV = 'test';
+        process.env.DATABASE_URL = 'sqlite::memory:';
+    
+        await sequelize.sync({ force: true });
+      });
+    
+      afterAll(async () => {
+        // Feche a conexão com o banco de dados
+        await sequelize.close();
+      });
+    
 
     it("É possível criar um usuário", async ()=>{
         const response = await request(app).post("/api/v1/register/client").send({
@@ -40,6 +42,7 @@ describe("Create User", ()=>{
         expect(response.body).toHaveProperty("error");
         expect(response.body.error).toEqual("Todos os campos são obrigatórios.");
     });
+
 
     it("Não é possível cadastrar o usuário com email existente", async ()=>{
         let response = await request(app).post("/api/v1/register/client").send({
