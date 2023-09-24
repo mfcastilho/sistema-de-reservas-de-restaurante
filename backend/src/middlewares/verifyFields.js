@@ -18,6 +18,13 @@ const verifyFields = (req, res, next)=>{
 
         return next();
     }
+    if(req.url == "/table"){
+        const { table_number, capacity, is_available } = req.body;
+
+        if(!table_number || !capacity || !is_available) return res.status(400).json({error: "Todos os campos são obrigatórios."});
+
+        return next();
+    }
 
     
 }
