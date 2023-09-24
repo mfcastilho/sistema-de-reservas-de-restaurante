@@ -8,6 +8,10 @@ let sequelize;
 if (environment === 'production') {
   sequelize = new Sequelize(process.env.DATABASE_URL, {
     dialect: 'postgres',
+    host: 'localhost',
+    username: 'seu-usuario',
+    password: 'sua-senha',
+    database: 'nome-do-banco',
     logging: false,
   });
 } else if (environment === 'test') {
