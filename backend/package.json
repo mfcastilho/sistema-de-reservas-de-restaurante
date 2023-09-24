@@ -4,11 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "NODE_ENV=production webpack --config webpack.config.js",
     "start": "node ./src/server/index.js",
     "dev": "nodemon ./src/server/index.js",
-    "pretest": "cross-env NODE_ENV=test sequelize db:migrate",
-    "test": "cross-env NODE_ENV=test jest",
-    "posttest": "cross-env NODE_ENV=test sequelize db:migrate:undo:all"
+    "test": "cross-env NODE_ENV=test jest"
   },
   "keywords": [],
   "author": "",
@@ -24,12 +23,15 @@
     "pg": "^8.11.3",
     "sequelize": "^6.33.0",
     "sequelize-cli": "^6.6.1",
+    "sqlite3": "^5.1.6",
     "uuid": "^9.0.1"
   },
   "devDependencies": {
     "@types/jest": "^29.5.5",
+    "@types/supertest": "^2.0.12",
     "cross-env": "^7.0.3",
     "jest": "^29.7.0",
-    "supertest": "^6.3.3"
+    "supertest": "^6.3.3",
+    "webpack": "^5.88.2"
   }
 }
