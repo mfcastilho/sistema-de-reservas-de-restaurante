@@ -143,7 +143,7 @@ describe("Create Reservation", () => {
         .set('Authorization', `Bearer ${authToken}`) 
         .send({
             table_number: 1,
-            date: "2023-010-03",
+            date: "2023-10-03",
             hour: "20:00"
         });
 
