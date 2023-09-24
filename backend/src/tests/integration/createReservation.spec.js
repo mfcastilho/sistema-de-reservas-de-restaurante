@@ -44,7 +44,7 @@ describe("Create Reservation", () => {
         .set('Authorization', `Bearer ${authToken}`) 
         .send({
             table_number: 1,
-            date: "2023-09-25",
+            date: "2023-10-03",
             hour: "20:30"
         });
         expect(response.ok).toBeTruthy();
@@ -119,7 +119,7 @@ describe("Create Reservation", () => {
         .set('Authorization', `Bearer ${authToken}`) 
         .send({
             table_number: 16,
-            date: "2023-09-29",
+            date: "2023-10-03",
             hour: "20:00"
         });
 
@@ -134,7 +134,7 @@ describe("Create Reservation", () => {
         .set('Authorization', `Bearer ${authToken}`) 
         .send({
             table_number: 1,
-            date: "2023-09-29",
+            date: "2023-10-03",
             hour: "20:00"
         });
 
@@ -143,7 +143,7 @@ describe("Create Reservation", () => {
         .set('Authorization', `Bearer ${authToken}`) 
         .send({
             table_number: 1,
-            date: "2023-09-29",
+            date: "2023-010-03",
             hour: "20:00"
         });
 
