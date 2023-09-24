@@ -79,7 +79,7 @@ describe("Get All User Reservations", ()=>{
     });
 
 
-    it("É possível listar todas as reservas do usuário logado", async ()=>{
+    it("It is possible to list all the reservations of the logged-in user", async ()=>{
         const response = await request(app)
         .get("/api/v1/reservations/user")
         .set('Authorization', `Bearer ${authToken}`);
@@ -109,7 +109,7 @@ describe("Get All User Reservations", ()=>{
     });
 
 
-    it("Não é possível listar as reservas do usuário logado, pois o token de autenticação é inválido", async ()=>{
+    it("It is not possible to list the reservations of the logged-in user because the authentication token is invalid", async ()=>{
         
         const invalidToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjA1ZDkyMTNjLWU0YjEtNGYzNy04OGI3LWE3N2Y5M2FmMTg4MSIsInJvbGUiOiJjbGllbnQiLCJpYXQiOjE2OTU1MTEwNzMsImV4cCI6MTY5NTU5NzQ3M30.F51hmqZ18rl-3I60r_kuTpoGyaAL0ly9xmtPnIcz";
 

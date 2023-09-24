@@ -38,7 +38,7 @@ describe("Create Reservation", () => {
     });
 
 
-    it('É possível criar uma Reserva', async () => {
+    it('It is possible to create a reservation', async () => {
         const response = await request(app)
         .post("/api/v1/reservation")
         .set('Authorization', `Bearer ${authToken}`) 
@@ -51,7 +51,7 @@ describe("Create Reservation", () => {
         expect(response.body).toHaveProperty("id");
     });
 
-    it("Não é possível fazer uma reserva, pois o token de autenticação é inválido", async ()=>{
+    it("It is not possible to make a reservation because the authentication token is invalid", async ()=>{
         const invalidToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjA1ZDkyMTNjLWU0YjEtNGYzNy04OGI3LWE3N2Y5M2FmMTg4MSIsInJvbGUiOiJjbGllbnQiLCJpYXQiOjE2OTU1MTEwNzMsImV4cCI6MTY5NTU5NzQ3M30.F51hmqZ18rl-3I60r_kuTpoGyaAL0ly9xmtPnIcz8Z";
 
         const response = await request(app)
@@ -68,7 +68,7 @@ describe("Create Reservation", () => {
         expect(response.body.error).toEqual("Para acessar este recurso um token de autenticação válido deve ser enviado.");
     });
 
-    it("Não é possível fazer uma reserva, pois data e/ou a hora da reserva já passaram.", async ()=>{
+    it("It is not possible to make a reservation because the date and/or time for the reservation have already passed", async ()=>{
         const response = await request(app)
         .post("/api/v1/reservation")
         .set('Authorization', `Bearer ${authToken}`) 
@@ -83,7 +83,7 @@ describe("Create Reservation", () => {
         expect(response.body.error).toEqual("Não foi possível realizar a reserva. A data e/ou a hora da reserva já passaram.");
     });
 
-    it("Não é possível fazer uma reserva, pois o horário solicitado não é um horário válido", async ()=>{
+    it("It is not possible to make a reservation because the requested time is not a valid time", async ()=>{
         const response = await request(app)
         .post("/api/v1/reservation")
         .set('Authorization', `Bearer ${authToken}`) 
@@ -98,7 +98,7 @@ describe("Create Reservation", () => {
         expect(response.body.error).toEqual("Reservas permitidas apenas das 18:00 até 23:59, exceto aos domingos.");
     });
 
-    it("Não é possível fazer uma reserva, pois o dia solicitado não é um dia válido", async ()=>{
+    it("It is not possible to make a reservation because the requested day is not a valid day", async ()=>{
         const response = await request(app)
         .post("/api/v1/reservation")
         .set('Authorization', `Bearer ${authToken}`) 
@@ -113,7 +113,7 @@ describe("Create Reservation", () => {
         expect(response.body.error).toEqual("Reservas não são permitidas aos domingos.");
     });
 
-    it("Não é possível fazer uma reserva, pois a mesa solicitada não existe no nosso sistema", async ()=>{
+    it("It is not possible to make a reservation because the requested table does not exist in our system", async ()=>{
         const response = await request(app)
         .post("/api/v1/reservation")
         .set('Authorization', `Bearer ${authToken}`) 
@@ -128,7 +128,7 @@ describe("Create Reservation", () => {
         expect(response.body.error).toEqual(`Não existe no nosso sistema a mesa de número ${16}.`);
     });
 
-    it("Não é possível fazer uma reserva, pois a mesa solicitada já foi reservada para esse horário", async ()=>{
+    it("It is not possible to make a reservation because the requested table has already been reserved for that time", async ()=>{
         await request(app)
         .post("/api/v1/reservation")
         .set('Authorization', `Bearer ${authToken}`) 
@@ -153,7 +153,7 @@ describe("Create Reservation", () => {
     });
 
 
-    it("Não é possível fazer uma reserva se algum campo estiver vazio", async ()=>{
+    it("It is not possible to make a reservation if any field is empty", async ()=>{
         const response = await request(app)
         .post("/api/v1/reservation")
         .set('Authorization', `Bearer ${authToken}`) 

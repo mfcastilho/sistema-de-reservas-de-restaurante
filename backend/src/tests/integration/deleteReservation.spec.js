@@ -66,7 +66,7 @@ describe("Delete Reservation by Admin", ()=>{
         await sequelize.close();
     });
 
-    it("É possível o Admin deletar uma Reserva", async ()=>{
+    it("The admin can delete a reservation", async ()=>{
         const response = await request(app).delete(`/api/v1/admin/reservation/${reservation.body.id}`)
         .set("Authorization", `Bearer ${authTokenAdmin}`);
 
@@ -75,7 +75,7 @@ describe("Delete Reservation by Admin", ()=>{
         expect(response.body.message).toEqual("Reserva excluída com sucesso.");
     });
 
-    it("Não é possível deletar uma reserva, pois o token de autenticação é inválido", async ()=>{
+    it("The admin cannot delete a reservation because the authentication token is invalid", async ()=>{
         const invalidToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjA1ZDkyMTNjLWU0YjEtNGYzNy04OGI3LWE3N2Y5M2FmMTg4MSIsInJvbGUiOiJjbGllbnQiLCJpYXQiOjE2OTU1MTEwNzMsImV4cCI6MTY5NTU5NzQ3M30.F51hmqZ18rl-3I60r_kuTpoGyaAL0ly9xmtPnIcz8Z";
 
         const response = await request(app).delete(`/api/v1/admin/reservation/${reservation.body.id}`)

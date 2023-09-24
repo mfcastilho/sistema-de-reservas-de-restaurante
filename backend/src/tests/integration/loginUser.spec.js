@@ -21,7 +21,7 @@ describe("User Login", () => {
         await sequelize.close();
     });
 
-    it("É possível fazer login", async () => {
+    it("It is possible to log in", async () => {
 
         const response = await request(app).post("/api/v1/login").send({
         email: "davi@email.com",
@@ -33,7 +33,7 @@ describe("User Login", () => {
     });
 
 
-    it("Não é possível o usuário fazer login se algum campo estiver vazio", async () => {
+    it("The user cannot log in if any field is empty", async () => {
         const response = await request(app).post("/api/v1/login").send({
           email: "",
           password: "123"
@@ -44,7 +44,7 @@ describe("User Login", () => {
         expect(response.body.error).toEqual("Todos os campos são obrigatórios.");
     });
 
-    it("Não é possível o usuário fazer login se o email for inválido", async () => {
+    it("The user cannot log in if the email is invalid", async () => {
         const response = await request(app).post("/api/v1/login").send({
           email: "davi25@email.com",
           password: "123"
@@ -56,7 +56,7 @@ describe("User Login", () => {
     });
 
 
-    it("Não é possível o usuário fazer login se a senha for inválida", async () => {
+    it("The user cannot log in if the password is invalid", async () => {
         const response = await request(app).post("/api/v1/login").send({
           email: "davi25@email.com",
           password: "12345"

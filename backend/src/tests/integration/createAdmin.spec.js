@@ -17,7 +17,7 @@ describe("Create Admin", ()=>{
         await sequelize.close();
     });
 
-    it("É possível criar um admnistrador", async ()=>{
+    it("It is possible to create an administrator", async ()=>{
         const response = await request(app).post("/api/v1/register/admin").send({
             name: "Mario",
             email: "mario@email.com",
@@ -29,7 +29,7 @@ describe("Create Admin", ()=>{
     });
 
 
-    it("Não é possível cadastrar o admnistrador se algum campo estiver vazio", async ()=>{
+    it("It is not possible to register the administrator if any field is empty", async ()=>{
         const response = await request(app).post("/api/v1/register/admin").send({
             name: "",
             email: "mario@email.com",
@@ -41,7 +41,7 @@ describe("Create Admin", ()=>{
         expect(response.body.error).toEqual("Todos os campos são obrigatórios.");
     });
 
-    it("Não é possível cadastrar o admnistrador com email existente", async ()=>{
+    it("It is not possible to register the administrator with an existing email", async ()=>{
         let response = await request(app).post("/api/v1/register/admin").send({
             name: "Mario Frederico",
             email: "mario@email.com",

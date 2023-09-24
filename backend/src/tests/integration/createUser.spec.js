@@ -18,7 +18,7 @@ describe("Create User", ()=>{
       });
     
 
-    it("É possível criar um usuário", async ()=>{
+    it("It is possible to create a user", async ()=>{
         const response = await request(app).post("/api/v1/register/client").send({
             name: "joaquim",
             email: "joaquim@email.com",
@@ -30,7 +30,7 @@ describe("Create User", ()=>{
     });
 
 
-    it("Não é possível cadastrar o usuário se algum campo estiver vazio", async ()=>{
+    it("It is not possible to register the user if any field is empty", async ()=>{
         const response = await request(app).post("/api/v1/register/client").send({
             name: "",
             email: "joaquim@email.com",
@@ -43,7 +43,7 @@ describe("Create User", ()=>{
     });
 
 
-    it("Não é possível cadastrar o usuário com email existente", async ()=>{
+    it("It is not possible to register the user with an existing email", async ()=>{
         let response = await request(app).post("/api/v1/register/client").send({
             name: "Joaquim Castilho",
             email: "joaquim@email.com",

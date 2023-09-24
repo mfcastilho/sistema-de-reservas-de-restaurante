@@ -17,7 +17,7 @@ describe("Create Table", ()=>{
         await sequelize.close();
     });
 
-    it("É possível cadastrar uma mesa", async ()=>{
+    it("It is possible to register a table", async ()=>{
         
         const response = await request(app).post("/api/v1/table").send({
             table_number: 1,
@@ -35,7 +35,7 @@ describe("Create Table", ()=>{
         })
     });
 
-    it("Não é possível cadastrar uma mesa se algum campo estiver vazio", async ()=>{
+    it("It is not possible to register a table if any field is empty", async ()=>{
         const response = await request(app).post("/api/v1/table").send({
             table_number: 1,
             capacity: "",

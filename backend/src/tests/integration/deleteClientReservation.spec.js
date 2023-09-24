@@ -49,7 +49,7 @@ describe("Delete Client Reservation", ()=>{
     });
 
 
-    it("É possível o cliente deletar uma Reserva", async ()=>{
+    it("The customer can delete a reservation", async ()=>{
         const response = await request(app).delete(`/api/v1/reservation/${reservation.body.id}`)
         .set("Authorization", `Bearer ${authToken}`);
 
@@ -58,7 +58,7 @@ describe("Delete Client Reservation", ()=>{
         expect(response.body.message).toEqual("Reserva excluída com sucesso.");
     });
 
-    it("Não é possível deletar uma reserva, pois o token de autenticação é inválido", async ()=>{
+    it("It is not possible to delete a reservation because the authentication token is invalid", async ()=>{
         const invalidToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjA1ZDkyMTNjLWU0YjEtNGYzNy04OGI3LWE3N2Y5M2FmMTg4MSIsInJvbGUiOiJjbGllbnQiLCJpYXQiOjE2OTU1MTEwNzMsImV4cCI6MTY5NTU5NzQ3M30.F51hmqZ18rl-3I60r_kuTpoGyaAL0ly9xmtPnIcz8Z";
 
         const response = await request(app).delete(`/api/v1/reservation/${reservation.body.id}`)

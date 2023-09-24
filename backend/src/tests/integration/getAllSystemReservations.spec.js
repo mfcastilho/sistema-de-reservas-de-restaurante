@@ -15,8 +15,6 @@ describe("Get All User Reservations", ()=>{
         await sequelize.sync({ force: true });
 
 
-
-        //-- INICIO: Cadastrando Mesas --
         await request(app).post("/api/v1/table").send({
             table_number: 1,
             capacity: 3,
@@ -34,12 +32,8 @@ describe("Get All User Reservations", ()=>{
             capacity: 4,
             is_available: true
         });
-        //-- FIM: Cadastrando Mesas --
 
 
-
-
-        //-- INICIO: Cadastrando/Logando Admin --
         const admin = await request(app).post("/api/v1/register/admin").send({
             name: "João",
             email: "joao@email.com",
@@ -52,12 +46,8 @@ describe("Get All User Reservations", ()=>{
         });
 
         authTokenAdmin = adminLogged.body.token;
-        //-- FIM: Cadastrando/Logando Admin --
 
 
-
-
-        //-- INICIO: Cadastrando/Logando Cliente --
         await request(app).post("/api/v1/register/client").send({
             name: "Amanda",
             email: "amanda@email.com",
@@ -70,11 +60,8 @@ describe("Get All User Reservations", ()=>{
         });
 
         authTokenClient = clientLogged.body.token;
-        //-- FIM: Cadastrando/Logando Cliente --
+        
 
-
-
-        //-- INICIO: Cliente fazendo Reserva--
         await request(app)
         .post("/api/v1/reservation")
         .set('Authorization', `Bearer ${authTokenClient}`) 
@@ -101,7 +88,7 @@ describe("Get All User Reservations", ()=>{
             date: "2023-10-03",
             hour: "20:00"
         });
-        //-- FIM: Cliente fazendo Reserva--
+        
 
 
     });
@@ -111,7 +98,7 @@ describe("Get All User Reservations", ()=>{
     });
 
 
-    it("É possível listar todas as reservas do sistema", async ()=>{
+    it("It is possible to list all the reservations in the system", async ()=>{
         const response = await request(app)
         .get("/api/v1/admin/all-reservations")
         .set('Authorization', `Bearer ${authTokenAdmin}`);
@@ -141,7 +128,7 @@ describe("Get All User Reservations", ()=>{
     });
 
 
-    it("Não é possível listar todas as reservas do sistema, pois o token de autenticação é inválido", async ()=>{
+    it("It is not possible to list all the reservations in the system because the authentication token is invalid", async ()=>{
         const invalidToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjA1ZDkyMTNjLWU0YjEtNGYzNy04OGI3LWE3N2Y5M2FmMTg4MSIsInJvbGUiOiJjbGllbnQiLCJpYXQiOjE2OTU1MTEwNzMsImV4cCI6MTY5NTU5NzQ3M30.F51hmqZ18rl-3I60r_kuTpoGyaAL0ly9xmtPnIcz8";
 
         const response = await request(app)
@@ -154,7 +141,7 @@ describe("Get All User Reservations", ()=>{
     });
 
 
-    it("Não é possível listar todas as reservas do sistema, pois o usuário não é administrador", async ()=>{
+    it("It is not possible to list all the reservations in the system because the user is not an administrator", async ()=>{
         const response = await request(app)
         .get("/api/v1/admin/all-reservations")
         .set('Authorization', `Bearer ${authTokenClient}`);
