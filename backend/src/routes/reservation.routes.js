@@ -10,7 +10,8 @@ const { CreateReservationController,
 const { checkTableAvailability, 
         validationReservation, 
         verifyToken, 
-        verifyIfIsAdmin } = require("../middlewares/index");
+        verifyIfIsAdmin, 
+        verifyFields} = require("../middlewares/index");
 
 
 
@@ -18,7 +19,7 @@ reservationRoutes.get("/admin/all-reservations", verifyToken, verifyIfIsAdmin, G
 
 reservationRoutes.delete("/admin/reservation/:id", verifyToken, verifyIfIsAdmin, DeleteClientReservationController.handle);
 
-reservationRoutes.post("/reservation", verifyToken, validationReservation, checkTableAvailability, CreateReservationController.handle);
+reservationRoutes.post("/reservation", verifyToken, verifyFields, validationReservation, checkTableAvailability, CreateReservationController.handle);
 
 reservationRoutes.get("/reservations/user", verifyToken, GetAllUserReservationsController.handle);
 
