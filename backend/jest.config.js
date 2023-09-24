@@ -10,11 +10,7 @@ const config = {
     // O ambiente de teste que será usado para os testes
     testEnvironment: 'node',
   
-    // Configurações de variáveis de ambiente específicas para testes
-    setupFilesEnv: {
-      NODE_ENV: 'test',
-      DATABASE_URL: 'sqlite::memory:', // Use o SQLite em memória para testes
-    },
+
   
     // Os padrões para encontrar arquivos de teste
     testMatch: [
