@@ -1,0 +1,20 @@
+
+
+.home{
+    overflow-y: hidden;
+}
+
+.home__container{
+    margin-top: .03rem;
+    overflow-y: hidden;
+}
+
+.carousel{
+    max-height: 53.125rem;
+}
+
+
+.carousel-image {
+    height: 40vh ; 
+  }
+  
