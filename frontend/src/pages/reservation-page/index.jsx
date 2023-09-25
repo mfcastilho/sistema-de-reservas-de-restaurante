@@ -17,30 +17,28 @@ import jwtDecode from "jwt-decode";
 const baseURL = "http://localhost:3000/api/v1";
 
 const ReservationPage = () => {
-
     const token = localStorage.getItem("token");
     const navigate = useNavigate();
 
-    const [currentDate, setCurrentDate] = useState(startOfDay(new Date()));
     const [availableDates, setAvailableDates] = useState([]);
     const [selectedDate, setSelectedDate] = useState(null);    
 
     const [tableOptions, setTableOptions] = useState([]);
     const [selectedTable, setSelectedTable] = useState(tableOptions.length > 0 ? tableOptions[0].id : "");
+    const [selectedTableNumber, setSelectedTableNumber] = useState();
 
     const [selectedTime, setSelectedTime] = useState("");
 
-    const checkTokenExpiration = ()=>{
+    const checkTokenExpiration = () => {
         if (!token) {
             navigate("/login");
         } else {
-
             const decodedToken = jwtDecode(token);
             if (decodedToken.exp * 1000 < Date.now()) navigate("/login");
         }
     }
 
-    const fetchData = async () => {
+    const getTables = async () => {
         try {
             const response = await axios(`${baseURL}/tables`);
             const tables = response.data;
@@ -52,22 +50,22 @@ const ReservationPage = () => {
 
     useEffect(() => {
         checkTokenExpiration();
-        fetchData();
+        getTables();
     }, []);
 
     useEffect(() => {
         const calculateAvailableDates = () => {
-        const next30Days = [];
-        let currentDate = startOfDay(new Date());
+            const next30Days = [];
+            let currentDate = startOfDay(new Date());
 
-        while (next30Days.length < 30) {
-            if (!isSunday(currentDate)) {
-            next30Days.push(currentDate);
+            while (next30Days.length < 30) {
+                if (!isSunday(currentDate)) {
+                    next30Days.push(currentDate);
+                }
+                currentDate = addDays(currentDate, 1);
             }
-            currentDate = addDays(currentDate, 1);
-        }
 
-        setAvailableDates(next30Days);
+            setAvailableDates(next30Days);
         };
 
         calculateAvailableDates();
@@ -82,20 +80,26 @@ const ReservationPage = () => {
         const timeOptions = [];
       
         while (startTime <= endTime) {
-          timeOptions.push(format(startTime, "HH:mm"));
-          startTime.setMinutes(startTime.getMinutes() + 30); 
+            timeOptions.push(format(startTime, "HH:mm"));
+            startTime.setMinutes(startTime.getMinutes() + 30); 
         }
       
         return timeOptions;
     };
 
     const handleDateChange = (e) => {
-        setCurrentDate(parseISO(e.target.value));
-        setSelectedDate(true);
+        const selectedDateValue = e.target.value;
+        const parsedDate = parseISO(selectedDateValue);
+        if (!isNaN(parsedDate.getTime())) {
+            setSelectedDate(parsedDate);
+        }
     };
 
     const handleTableChange = (e) => {
         setSelectedTable(e.target.value);
+        const selectedTableId = e.target.value;
+        const tableNumber = tableOptions.find(table => table.id === selectedTableId)?.table_number || "";
+        setSelectedTableNumber(tableNumber);
     };
 
     const isFormValid = () => {
@@ -107,8 +111,8 @@ const ReservationPage = () => {
             toast.error("Preencha todos os campos antes de enviar o formulário.");
             return;
         }
-        const selectedTableNumber = selectedTable.split(" ")[1];
-        const formattedDate = format(currentDate, "yyyy-MM-dd");
+       
+        const formattedDate = format(selectedDate, "yyyy-MM-dd");
 
         const reservationData = {
             table_number: selectedTableNumber,
@@ -116,73 +120,94 @@ const ReservationPage = () => {
             hour: selectedTime,
         };
 
+        const config = {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        }
+
         try {
-            await axios.post(`${baseURL}/reservation`, reservationData);
+            await axios.post(`${baseURL}/reservation`, reservationData, config);
             toast.success("Reserva enviada com sucesso!");
             setSelectedDate(null);
             setSelectedTable("");
             setSelectedTime("");
         } catch (error) {
-            // toast.error("Erro ao enviar reserva. Por favor, tente novamente.");
             toast.error(error.response.data.error);
-            console.log(error.response.data.error);
         }
     };
 
     return (
         <div className="reservation-page">
             <ToastContainer />
-            <div className="form-group">
-                <label className="selects-label">Data de Reserva</label>
-                <select
-                    className="date-select"
-                    value={format(currentDate, "yyyy-MM-dd")}
-                    onChange={handleDateChange}
-                >
-                    <option value="">Selecione</option>
-                    {availableDates.map((date) => (
-                    <option key={date} value={format(date, "yyyy-MM-dd")}>
-                        {format(date, "dd/MM/yyyy, EEEE", { locale: ptBR })}
-                    </option>
-                    ))}
-                </select>
+            <div className="reservation-page__container">
+                
+                <div className="title-box">
+                    <h1>Fazer Reserva</h1>
+                </div>
+
+                <div className="form-group">
+                    <label className="selects-label">Data de Reserva</label>
+                    <select
+                        className="date-select"
+                        value={selectedDate ? format(selectedDate, "yyyy-MM-dd") : ""}
+                        onChange={handleDateChange}
+                    >
+                        <option value="">Selecione</option>
+                        {availableDates.map((date) => (
+                        <option key={date} value={format(date, "yyyy-MM-dd")}>
+                            {format(date, "dd/MM/yyyy, EEEE", { locale: ptBR })}
+                        </option>
+                        ))}
+                    </select>
+                </div>
+            
+                <div className="form-group">
+                    <label htmlFor="table" className="selects-label">Escolha uma mesa</label>
+                    <select
+                        id="table"
+                        value={selectedTable}
+                        onChange={handleTableChange}
+                        disabled={!selectedDate} 
+                        className="table-select"
+                    >
+                        <option value="">Selecione</option>
+                        {tableOptions.map((table) => (
+                        <option key={table.id} value={table.id}>
+                            Mesa {table.table_number} ({table.capacity} pessoas)
+                        </option>
+                        ))}
+                    </select>
+                </div>
+                <div className="form-group">
+                    <label htmlFor="time" className="selects-label">Escolha o horário</label>
+                    <select
+                        id="time"
+                        value={selectedTime}
+                        onChange={(e) => setSelectedTime(e.target.value)}
+                        disabled={!selectedDate || !selectedTable}
+                        className="hour-select"
+                    >
+                        <option value="">Selecione</option>
+                        {generateTimeOptions().map((time, index) => (
+                        <option key={index} value={time}>
+                            {time}
+                        </option>
+                        ))}
+                    </select>
+                </div>
+
+                <div className="btn-box">
+                    <button
+                        className={`reservation-btn ${isFormValid() ? "btn-primary btn send-btn" : ""}`}
+                        onClick={sendDataToBackend}
+                        disabled={!isFormValid()}
+                    >
+                        Enviar Reserva
+                    </button>
+                </div>
+                
             </div>
-        
-            <div className="form-group">
-                <label htmlFor="table" className="selects-label">Escolha uma mesa</label>
-                <select
-                    id="table"
-                    value={selectedTable}
-                    onChange={handleTableChange}
-                    disabled={!selectedDate} 
-                    className="table-select"
-                >
-                    <option value="">Selecione</option>
-                    {tableOptions.map((table) => (
-                    <option key={table.id} value={table.id}>
-                        Mesa {table.table_number} ({table.capacity} pessoas)
-                    </option>
-                    ))}
-                </select>
-            </div>
-            <div className="form-group">
-                <label htmlFor="time" className="selects-label">Escolha o horário</label>
-                <select
-                    id="time"
-                    value={selectedTime}
-                    onChange={(e) => setSelectedTime(e.target.value)}
-                    disabled={!selectedDate || !selectedTable}
-                    className="hour-select"
-                >
-                    <option value="">Selecione</option>
-                    {generateTimeOptions().map((time, index) => (
-                    <option key={index} value={time}>
-                        {time}
-                    </option>
-                    ))}
-                </select>
-            </div>
-            <button onClick={sendDataToBackend} disabled={!isFormValid()}>Enviar Reserva</button>
         </div>
     );
 };
