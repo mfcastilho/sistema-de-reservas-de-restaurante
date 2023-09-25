@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../components/auth-provider";
+
 import {
   addDays,
   startOfDay,
@@ -17,6 +19,8 @@ import jwtDecode from "jwt-decode";
 const baseURL = "http://localhost:3000/api/v1";
 
 const ReservationPage = () => {
+    
+
     const token = localStorage.getItem("token");
     const navigate = useNavigate();
 
@@ -28,6 +32,8 @@ const ReservationPage = () => {
     const [selectedTableNumber, setSelectedTableNumber] = useState();
 
     const [selectedTime, setSelectedTime] = useState("");
+
+    const { login } = useAuth();
 
     const checkTokenExpiration = () => {
         if (!token) {
@@ -51,6 +57,7 @@ const ReservationPage = () => {
     useEffect(() => {
         checkTokenExpiration();
         getTables();
+        login();
     }, []);
 
     useEffect(() => {
