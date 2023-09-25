@@ -107,7 +107,6 @@ const ReservationPage = () => {
             toast.error("Preencha todos os campos antes de enviar o formulário.");
             return;
         }
-
         const selectedTableNumber = selectedTable.split(" ")[1];
         const formattedDate = format(currentDate, "yyyy-MM-dd");
 
