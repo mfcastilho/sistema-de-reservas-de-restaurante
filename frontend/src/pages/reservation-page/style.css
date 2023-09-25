@@ -1,0 +1,22 @@
+
+.form-group{
+    display: flex;
+    flex-direction: column;
+}
+
+.date-selector {
+     width: 200px;
+}
+   
+.selects-label {
+    font-weight: bold;
+}
+   
+.date-select, .table-select, .hour-select {
+    width: 25%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+}
+   

@@ -1,0 +1,46 @@
+
+
+.login{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 60vh;
+}
+
+.login-container{
+    border: 1px solid black;
+    border-radius: .5rem;
+    padding: 2rem;
+    width: 60%;
+
+}
+
+.title-box{
+    display: flex;
+    justify-content: center;
+}
+
+.title-box h1{
+    color: rgb(78, 153, 151);
+}
+
+.login input{
+    margin-bottom: .8rem;
+}
+
+.btn-box{
+    display: flex;
+    justify-content: center;
+}
+
+.send-btn{
+    border: none;
+    background-color: rgb(78, 153, 151);
+    width: 100%;
+    
+}
+
+.send-btn:hover{
+    background-color: rgb(67, 135, 133);
+}
