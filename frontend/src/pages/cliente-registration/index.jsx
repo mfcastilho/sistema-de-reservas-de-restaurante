@@ -1,6 +1,6 @@
 import "./style.css";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
 
@@ -51,7 +51,9 @@ const ClienteRegistrationPage = ()=>{
                 <div className="btn-box">
                     <button onClick={handleSubmit} type="button" className="btn send-btn btn-primary">cadastrar</button>
                 </div>
-
+                <div className="link-to-login--box">
+                    <span>Já tem uma conta? <Link href="">Faça Login</Link> </span>
+                 </div>
             </div>
 
         </div>
