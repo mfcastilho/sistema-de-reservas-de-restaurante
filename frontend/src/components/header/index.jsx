@@ -14,9 +14,16 @@ const Header = () => {
   return (
     <div className="header">
       <div className="header__container">
-        <Link className="logo--link" to={"/"}><img src="../../../public/Digiliza-trasparent.png" alt="" className="logo" /></Link>
-        <div className="header-btns-box">
+        <Link className="logo--link" to={"/"}><img src="../../../public/Digiliza-trasparent.png" alt="" className="header--logo" /></Link>
+        <div className="header--btns--box">
+        {!isLoggedIn ? (
+            
+            <Link to="/register/client" className="register--btn">
+              Cadastrar
+            </Link>
+          ) : ""}
           {!isLoggedIn ? (
+            
             <Link to="/login" className="login--btn">
               Login
             </Link>
