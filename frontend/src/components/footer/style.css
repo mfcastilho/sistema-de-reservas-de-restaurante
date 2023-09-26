@@ -1,0 +1,27 @@
+
+.footer{
+    padding: 0 2rem;
+    background-color: #FFF;
+    border-top: 1.5px solid #d1dad9;
+}
+
+.footer__container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 5rem;  
+}
+
+.footer--title{
+    margin: 0;
+    font-size: .92rem;
+}
+
+.icons--box{
+    display: flex;
+    gap: 1rem;
+}
+
+.icon--styled{
+    color: #000;
+}
