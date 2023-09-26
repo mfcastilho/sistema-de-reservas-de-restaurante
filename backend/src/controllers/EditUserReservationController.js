@@ -12,11 +12,9 @@ class EditUserReservationController {
             
             const service = new EditUserReservationService();
 
-            const response = await service.execute({ id, date, hour, table_id, user_id });
+            const reservationUpdated = await service.execute({ id, date, hour, table_id, user_id });
 
-            if(response instanceof Error) return res.status(404).json(response.message);
-
-            return res.status(200).json(response);
+            return res.status(200).json(reservationUpdated);
             
         } catch (error) {
             return res.status(500).json({ error: "Erro interno do servidor." });

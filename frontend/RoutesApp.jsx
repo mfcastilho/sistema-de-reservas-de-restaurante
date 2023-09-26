@@ -9,6 +9,7 @@ import Unauthorized from "./src/pages/unauthorized-page";
 import Error500 from "./src/pages/error500-page";
 import AdminPanelPage from "./src/pages/admin-panel-page";
 import NotFound from "./src/pages/not-found-page";
+import UserPanelPage from "./src/pages/user-panel-page";
 
 
 import PrivateRoute from "./PrivateRoute";
@@ -20,6 +21,7 @@ function RoutesApp() {
 
         <Routes>
             
+            <Route path="/user-panel" element={<UserPanelPage/>} />
             <Route path="/" element={<HomePage/>} />
 
             <Route path="/login" element={<LoginPage />} />

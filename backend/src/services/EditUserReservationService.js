@@ -10,8 +10,6 @@ class EditUserReservationService {
            
             const reservation = await repo.findByPk(id);
 
-            if(!reservation) return Error("Reserva não encontrada.");
-
             const dateHourReservation = new Date(`${date}T${hour}:00`);
             
             await repo.update({

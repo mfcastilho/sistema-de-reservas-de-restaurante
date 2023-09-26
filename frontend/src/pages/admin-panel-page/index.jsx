@@ -90,7 +90,7 @@ const AdminPanelPage = () => {
         <div className="admin-panel">
             <div className="admin-panel__container">
                 <div className="title-box reservations-title">
-                    <h1>Reservas</h1>
+                    <h1>Painel Administrativo</h1>
                 </div>
                 <table className="table">
                 <thead className="custom-thead">

@@ -13,7 +13,8 @@ const { checkTableAvailability,
         verifyToken, 
         verifyIfIsAdmin, 
         verifyFields,
-        verifyEditReservationFields} = require("../middlewares/index");
+        verifyEditReservationFields,
+        verifyIfRservationExists} = require("../middlewares/index");
 
 
 
@@ -25,7 +26,7 @@ reservationRoutes.post("/reservation", verifyToken, verifyFields, validationRese
 
 reservationRoutes.get("/user/reservations", verifyToken, GetAllUserReservationsController.handle);
 
-reservationRoutes.put("/reservation/edit/:id", verifyToken, verifyEditReservationFields, validationReservation, checkTableAvailability, EditUserReservationController.handle);
+reservationRoutes.put("/reservation/edit/:id", verifyToken, verifyEditReservationFields, validationReservation, verifyIfRservationExists,checkTableAvailability, EditUserReservationController.handle);
 
 reservationRoutes.delete("/reservation/:id", verifyToken, DeleteReservationController.handle);
 

@@ -1,0 +1,26 @@
+
+.sidebar {
+    padding-top: 3rem;
+    height: 72vh;
+    width: 250px;
+    top: 0;
+    left: 0;
+    background-color: #387e78;
+    z-index: -1;
+}
+
+.sidebar a {
+    padding: 15px 25px;
+    text-decoration: none;
+    font-size: 20px;
+    color: white;
+    display: block;
+}
+
+.sidebar a:hover {
+    background-color: #4c9d96;
+}
+
+.container-fluid{
+    margin-left: 250px;
+}

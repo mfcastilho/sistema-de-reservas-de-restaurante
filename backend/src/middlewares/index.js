@@ -9,6 +9,8 @@ const validationReservation = require("./validationReservation");
 const verifyIfIsAdmin = require("./verifyIfIsAdmin");
 const verifyRegistrationFields = require("./verifyRegistrationFields");
 const verifyEditReservationFields = require("./verifyEditReservationFields");
+const verifyIfRservationExists = require("./verifyIfReservationExists");
+
 
 
 
@@ -24,5 +26,6 @@ module.exports = {
     validationReservation,
     verifyIfIsAdmin,
     verifyRegistrationFields,
-    verifyEditReservationFields
+    verifyEditReservationFields,
+    verifyIfRservationExists
 }
