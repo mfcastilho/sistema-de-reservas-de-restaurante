@@ -8,17 +8,18 @@ const HomePage = ()=>{
         <div className="home">
             <div className="home__container">
             <div id="carouselExampleControls" className="carousel slide" data-ride="carousel">
+
                 <div className="carousel-inner">
+
                     <div className="carousel-item active">
-                    <img className="d-block w-100" src="../../../public/banner1.jpg" alt="First slide"/>
+                        <img className="d-block w-100" src="../../../public/banner1.jpg" alt="First slide"/>
                     </div>
                     <div className="carousel-item">
-                    <img className="d-block w-100" src="../../../public/banner1.jpg" alt="Second slide"/>
+                        <img className="d-block w-100" src="../../../public/banner2.png" alt="Second slide"/>
                     </div>
-                    <div className="carousel-item">
-                    <img className="d-block w-100" src="../../../public/banner1.jpg" alt="Third slide"/>
-                    </div>
+                    
                 </div>
+                
                 <a className="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
                     <span className="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span className="sr-only">Previous</span>
