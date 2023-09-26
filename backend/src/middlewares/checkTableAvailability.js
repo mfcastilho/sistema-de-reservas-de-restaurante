@@ -14,6 +14,8 @@ async function checkTableAvailability(req, res, next) {
         const table = await repoTables.findOne({where: {table_number}, raw:true});
 
         if(!table) return res.status(404).json({error: `Não existe no nosso sistema a mesa de número ${table_number}.`});
+
+        
         
         const conflict = await repo.findOne({
         where: {

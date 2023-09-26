@@ -8,6 +8,7 @@ const checkTableAvailability = require("./checkTableAvailability");
 const validationReservation = require("./validationReservation");
 const verifyIfIsAdmin = require("./verifyIfIsAdmin");
 const verifyRegistrationFields = require("./verifyRegistrationFields");
+const verifyEditReservationFields = require("./verifyEditReservationFields");
 
 
 
@@ -22,5 +23,6 @@ module.exports = {
     checkTableAvailability,
     validationReservation,
     verifyIfIsAdmin,
-    verifyRegistrationFields
+    verifyRegistrationFields,
+    verifyEditReservationFields
 }

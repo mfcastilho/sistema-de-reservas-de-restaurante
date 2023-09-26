@@ -8,6 +8,9 @@ const DeleteReservationService = require("./DeleteReservationService");
 const GetAllSystemReservationsService = require("./GetAllSystemReservationsService");
 const DeleteClientReservationService = require("./DeleteClientReservationService");
 const CreateTableService = require("./CreateTableService");
+const EditUserReservationService = require("./EditUserReservationService");
+
+
 
 
 
@@ -21,5 +24,6 @@ module.exports = {
     DeleteReservationService,
     GetAllSystemReservationsService,
     DeleteClientReservationService,
-    CreateTableService
+    CreateTableService,
+    EditUserReservationService
 }

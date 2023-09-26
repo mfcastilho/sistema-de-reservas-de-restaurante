@@ -8,6 +8,7 @@ const DeleteReservationController = require("./DeleteReservationController");
 const GetAllSystemReservationsController = require("./GetAllSystemReservationsController");
 const DeleteClientReservationController = require("./DeleteClientReservationController");
 const CreateTableController = require("./CreateTableController");
+const EditUserReservationController = require("./EditUserReservationController");
 
 
 
@@ -21,5 +22,6 @@ module.exports = {
     DeleteReservationController,
     GetAllSystemReservationsController,
     DeleteClientReservationController,
-    CreateTableController
+    CreateTableController,
+    EditUserReservationController
 }
