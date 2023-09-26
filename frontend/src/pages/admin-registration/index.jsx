@@ -22,11 +22,15 @@ const AdminRegistrationPage = ()=>{
         }
         try {
             const response = await axios.post(`${baseURL}/register/admin`, data);
-            if(response) toast.success("Administrador cadastrado com sucesso.");
+            if(response.status === 201) {
+                toast.success("Administrador cadastrado com sucesso.");
 
-            setTimeout(()=>{
-                navigate("/");
-            }, 6000)
+                setTimeout(()=>{
+                    navigate("/");
+                }, 6000)
+            }else if(response.status === 500){
+                navigate("/error");
+            }
             
         } catch (error) {
             toast.error(error.response.data.error);
