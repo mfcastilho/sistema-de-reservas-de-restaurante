@@ -29,6 +29,7 @@ const ClienteRegistrationPage = ()=>{
             }, 6000)
             
         } catch (error) {
+            console.log(error);
             toast.error(error.response.data.error);
         }
     }
@@ -45,14 +46,14 @@ const ClienteRegistrationPage = ()=>{
 
                 <input className="form-control" type="text" placeholder="Insira seu nome" value={name} onChange={(e)=>setName(e.target.value)} />
 
-                <input className="form-control" type="text" placeholder="Insira seu email" value={email} onChange={(e)=>setEmail(e.target.value)} />
+                <input className="form-control" type="email" placeholder="Insira seu email" value={email} onChange={(e)=>setEmail(e.target.value)} />
                 <input className="form-control" type="password" placeholder="Insira sua senha" value={password} onChange={(e)=> setPassword(e.target.value)} />
 
                 <div className="btn-box">
                     <button onClick={handleSubmit} type="button" className="btn send-btn btn-primary">cadastrar</button>
                 </div>
                 <div className="link-to-login--box">
-                    <span>Já tem uma conta? <Link href="">Faça Login</Link> </span>
+                    <span>Já tem uma conta? <Link to={"/login"}>Faça Login</Link> </span>
                  </div>
             </div>
 

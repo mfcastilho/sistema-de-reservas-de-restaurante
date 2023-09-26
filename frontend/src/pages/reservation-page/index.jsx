@@ -15,6 +15,7 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import jwtDecode from "jwt-decode";
+import Swal from 'sweetalert2';
 
 const baseURL = "http://localhost:3000/api/v1";
 
@@ -134,11 +135,25 @@ const ReservationPage = () => {
         }
 
         try {
-            await axios.post(`${baseURL}/reservation`, reservationData, config);
-            toast.success("Reserva enviada com sucesso!");
+            const response = await axios.post(`${baseURL}/reservation`, reservationData, config);
+            // toast.success("Reserva enviada com sucesso!");
             setSelectedDate(null);
             setSelectedTable("");
             setSelectedTime("");
+
+            Swal.fire({
+                title: 'Reserva enviada com sucesso!',
+                html: `
+                    <p>Responsável: ${response.data.user.name}</p>
+                    <p>Mesa: nº ${response.data.table.table_number}</p>
+                    <p>Capacidade: ${response.data.table.capacity} pessoas</p>
+                    <p>Data: ${format(new Date(response.data.date_hour_reservation), "dd/MM/yyy")}</p>
+                    <p>Hora: ${new Date(response.data.date_hour_reservation).getHours()} hs</p>
+                `,
+                icon: 'success',
+                confirmButtonText: 'OK',
+            });
+            
         } catch (error) {
             if(error.response.status === 500) navigate("/error");
             toast.error(error.response.data.error);

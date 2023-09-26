@@ -49,7 +49,7 @@ const AdminRegistrationPage = ()=>{
 
                 <input className="form-control" type="text" placeholder="Insira seu nome" value={name} onChange={(e)=>setName(e.target.value)} />
 
-                <input className="form-control" type="text" placeholder="Insira seu email" value={email} onChange={(e)=>setEmail(e.target.value)} />
+                <input className="form-control" type="email" placeholder="Insira seu email" value={email} onChange={(e)=>setEmail(e.target.value)} />
                 <input className="form-control" type="password" placeholder="Insira sua senha" value={password} onChange={(e)=> setPassword(e.target.value)} />
 
                 <div className="btn-box">

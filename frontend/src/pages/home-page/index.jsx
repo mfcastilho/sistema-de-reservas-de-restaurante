@@ -12,10 +12,10 @@ const HomePage = ()=>{
                 <div className="carousel-inner">
 
                     <div className="carousel-item active">
-                        <img className="d-block w-100" src="../../../public/banner1.jpg" alt="First slide"/>
+                        <img className="d-block w-100" src="../../../public/banner1.png" alt="First slide"/>
                     </div>
                     <div className="carousel-item">
-                        <img className="d-block w-100" src="../../../public/banner2.png" alt="Second slide"/>
+                        <img className="d-block w-100" src="../../../public/banner2.jpg" alt="Second slide"/>
                     </div>
                     
                 </div>

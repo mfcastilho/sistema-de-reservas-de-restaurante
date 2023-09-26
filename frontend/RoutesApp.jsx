@@ -6,7 +6,7 @@ import ClienteRegistrationPage from "./src/pages/cliente-registration";
 import AdminRegistrationPage from "./src/pages/admin-registration";
 import HomePage from "./src/pages/home-page";
 import Unauthorized from "./src/pages/unauthorized-page";
-import Error500 from "./src/pages/generic-error-page";
+import Error500 from "./src/pages/error500-page";
 import AdminPanelPage from "./src/pages/admin-panel-page";
 import NotFound from "./src/pages/not-found-page";
 

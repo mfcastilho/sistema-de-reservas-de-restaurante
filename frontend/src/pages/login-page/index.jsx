@@ -71,7 +71,7 @@ const LoginPage = () => {
           </button>
         </div>
         <div className="link-to-registration--box">
-            <span>Não tem uma conta? <Link href="">Cadastre-se</Link> </span>
+            <span>Não tem uma conta? <Link to={"/register/client"}>Cadastre-se</Link> </span>
         </div>
       </div>
     </div>

@@ -1,8 +1,27 @@
 
- 
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
 
 
- .custom-thead{
+td:last-child, th:last-child {
+    text-align: center;
+}
+
+.custom-thead{
     background-color: #4c9d96;
     color: #FFF;
- }
+}
+
+.delete-btn{
+    border: none;
+    border-radius: .5rem;
+    background-color: rgb(187, 9, 9);
+    padding: .2rem .7rem;
+    cursor: pointer;
+}
+
+.delete--btn--icon{
+    color: #FFF;
+}
