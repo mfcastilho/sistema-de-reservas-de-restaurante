@@ -27,12 +27,12 @@ describe("Delete Reservation by Admin", ()=>{
         await request(app).post("/api/v1/register/client").send({
             name: "João",
             email: "joao@email.com",
-            password: "123"
+            password: "12345"
         });
 
         const userLogged = await request(app).post("/api/v1/login").send({
             email: "joao@email.com",
-            password: "123"
+            password: "12345"
         });
 
         authTokenClient = userLogged.body.token;
@@ -50,12 +50,12 @@ describe("Delete Reservation by Admin", ()=>{
         await request(app).post("/api/v1/register/admin").send({
             name: "Amanda",
             email: "amanda@email.com",
-            password: "123"
+            password: "12345"
         });
 
         const adminLogged = await request(app).post("/api/v1/login").send({
             email: "amanda@email.com",
-            password: "123"
+            password: "12345"
         });
 
         authTokenAdmin = adminLogged.body.token;

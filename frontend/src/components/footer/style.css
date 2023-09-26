@@ -3,9 +3,11 @@
     padding: 0 2rem;
     background-color: #FFF;
     border-top: 1.5px solid #d1dad9;
+    width: 100%;
 }
 
 .footer__container{
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;

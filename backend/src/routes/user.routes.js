@@ -12,7 +12,7 @@ const { verifyFields,
 
 userRoutes.post("/register/client", verifyFields, verifyRegistrationFields, verifyEmail, CreateUserController.handle);
 
-userRoutes.post("/register/admin", verifyFields, verifyRegistrationFields, verifyAdminRegistration, CreateAdminController.handle);
+userRoutes.post("/register/admin", verifyFields,verifyRegistrationFields, verifyAdminRegistration, CreateAdminController.handle);
 
 userRoutes.post("/login", verifyFields, verifyIfEmailNotExists, verifyLoginPassword, LoginUserController.handle);
 

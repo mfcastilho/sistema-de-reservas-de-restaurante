@@ -10,21 +10,22 @@ const verifyRegistrationFields = async (req, res, next) => {
       .trim()
       .required()
       .messages({
-        'string.base': "O campo nome deve ser um texto",
-        'any.required': "O campo nome é obrigatório",
-        'string.min': "O nome tem que ter no mínimo 3 caracteres.",
-        'string.max': "O nome tem que ter no máximo 30 caracteres.",
-        'string.empty': "O campo nome não pode estar vazio."
+        'string.base': "O campo nome deve ser um texto.",
+        'any.required': "O campo nome é obrigatório.",
+        'string.min': "O nome tem que ter no mínimo 3 e no máximo 30 caracteres.",
+        'string.max': "O nome tem que ter no mínimo 3 e no máximo 30 caracteres.",
+        'string.empty': "Todos os campos são obrigatórios."
       }),
 
     email: Joi.string()
       .trim()
-      .email()
+      .email({ tlds: { allow: false } })
       .required()
       .messages({
-        'any.required': "O campo email é obrigatório",
-        'string.base': "Formato de email inválido",
-        'string.email': "Formato de email inválido",
+        'any.required': "O campo email é obrigatório.",
+        'string.base': "Formato de email inválido.",
+        'string.email': "Formato de email inválido.",
+        'string.empty': "Todos os campos são obrigatórios."
       }),
 
     password: Joi.string()
@@ -33,10 +34,10 @@ const verifyRegistrationFields = async (req, res, next) => {
       .max(16)
       .required()
       .messages({
-        'any.required': "O campo senha é obrigatório",
-        'string.min': "A senha deve ter no mínimo 5 caracteres e no máximo 16.",
-        'string.max': "A senha deve ter no mínimo 5 caracteres e no máximo 16.",
-        'string.empty': "O campo senha não pode estar vazio." 
+        'any.required': "O campo senha é obrigatório.",
+        'string.min': "A senha deve conter no mínimo 5 e no máximo 16 caracteres.", 
+        'string.max': "A senha deve conter no mínimo 5 e no máximo 16 caracteres.", 
+        'string.empty': "Todos os campos são obrigatórios."
       })
   });
 

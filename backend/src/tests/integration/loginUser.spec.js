@@ -13,7 +13,7 @@ describe("User Login", () => {
         await request(app).post("/api/v1/register/client").send({
             name: "davi",
             email: "davi@email.com",
-            password: "123"
+            password: "12345"
         });
     });
 
@@ -25,7 +25,7 @@ describe("User Login", () => {
 
         const response = await request(app).post("/api/v1/login").send({
         email: "davi@email.com",
-        password: "123"
+        password: "12345"
         });
 
         expect(response.ok).toBeTruthy();
@@ -36,7 +36,7 @@ describe("User Login", () => {
     it("The user cannot log in if any field is empty", async () => {
         const response = await request(app).post("/api/v1/login").send({
           email: "",
-          password: "123"
+          password: "12345"
         });
   
         expect(response.ok).toBeFalsy();
@@ -47,7 +47,7 @@ describe("User Login", () => {
     it("The user cannot log in if the email is invalid", async () => {
         const response = await request(app).post("/api/v1/login").send({
           email: "davi25@email.com",
-          password: "123"
+          password: "12345"
         });
   
         expect(response.ok).toBeFalsy();

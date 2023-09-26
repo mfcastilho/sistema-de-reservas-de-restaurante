@@ -10,6 +10,8 @@ const verifyIfIsAdmin = require("./verifyIfIsAdmin");
 const verifyRegistrationFields = require("./verifyRegistrationFields");
 
 
+
+
 module.exports = {
     verifyFields,
     verifyIfEmailNotExists,

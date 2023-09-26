@@ -1,7 +1,12 @@
 
+.reservations-title{
+    margin: 2rem 0 0 1rem;
+}
+
 table {
     border-collapse: collapse;
     width: 100%;
+    min-height: 56vh;
 }
 
 

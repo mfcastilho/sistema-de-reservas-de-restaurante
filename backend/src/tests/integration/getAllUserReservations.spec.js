@@ -33,12 +33,12 @@ describe("Get All User Reservations", ()=>{
         await request(app).post("/api/v1/register/client").send({
             name: "João",
             email: "joao@email.com",
-            password: "123"
+            password: "12345"
         });
 
         const userLogged = await request(app).post("/api/v1/login").send({
             email: "joao@email.com",
-            password: "123"
+            password: "12345"
         });
 
         authToken = userLogged.body.token;

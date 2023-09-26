@@ -35,9 +35,9 @@ const AdminPanelPage = () => {
 
     const getReservationsInfos = async () => {
         const config = {
-        headers: {
-            Authorization: `Bearer ${token}`,
-        },
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
         };
 
         try {
@@ -58,8 +58,14 @@ const AdminPanelPage = () => {
         cancelButtonText: 'Cancelar',
         }).then((result) => {
         if (result.isConfirmed) {
+
+            const config = {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            };
             
-            axios.delete(`${baseURL}/admin/reservation/${reservationId}`).then(() => {
+            axios.delete(`${baseURL}/admin/reservation/${reservationId}`, config).then(() => {
               
               getReservationsInfos(); 
             });
@@ -83,22 +89,25 @@ const AdminPanelPage = () => {
     return (
         <div className="admin-panel">
             <div className="admin-panel__container">
+                <div className="title-box reservations-title">
+                    <h1>Reservas</h1>
+                </div>
                 <table className="table">
                 <thead className="custom-thead">
                     <tr>
                     <th scope="col" className="col-2">
                         Mesa
                     </th>
-                    <th scope="col" className="col-3">
+                    <th scope="col" className="col-2">
                         Capacidade
                     </th>
-                    <th scope="col" className="col-3">
-                        Data/Hora da Reserva
-                    </th>
                     <th scope="col" className="col-2">
+                        Data/Hora
+                    </th>
+                    <th scope="col" className="col-1">
                         Cliente
                     </th>
-                    <th scope="col" className="col-2">
+                    <th scope="col" className="col-1">
                         Deletar
                     </th>
                     </tr>
