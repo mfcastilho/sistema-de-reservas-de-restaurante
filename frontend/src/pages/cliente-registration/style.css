@@ -5,7 +5,7 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 60vh;
+    height: 72vh;
 }
 
 .client-registration__container{
@@ -42,4 +42,10 @@
 
 .send-btn:hover{
     background-color: rgb(67, 135, 133);
+}
+
+.link-to-login--box{
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
 }
