@@ -2,51 +2,46 @@
 .header{
     padding: 0 2rem;
     background-color: #FFF;
-    border-bottom: 1.5px solid #4c9d96;
+    border-bottom: 1.5px solid #d1dad9;
 }
 
 .header__container{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 5rem;
-    
+    height: 5rem;   
 }
 
-.logo{
+.header--logo{
    width: 25%;
 }
 
-.header-btns-box{
+.header--btns--box{
     display: flex;
     gap: 1rem;
 }
 
-.header-btns-box button{
 
-    width: 6rem;
-    height: 2rem;
-    border: none;
-    border-radius: .3rem;
-    cursor: pointer;
-
-    transition: .2s all;
-}
-
-.header-btns-box button:focus{
-    outline: none;
-}
-
-.header-btns-box button:hover{
-    background-color: rgb(221, 228, 225);
-}
-
-.login--btn{
-    min-width: 5.262rem;
+.register--btn{
+    min-width: 6.472rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid #4c9d96;
+    border: 1px solid #bfc6c5;
+    background-color: #4c9d96;
+    border-radius: .3rem;
+    height: 2rem;
+    padding: 1rem;
+    color: #FFF;
+    transition: .3s ease-out;
+}
+
+.login--btn{
+    min-width: 6.472rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #bfc6c5;
     border-radius: .3rem;
     height: 2rem;
     padding: 1rem;
@@ -56,7 +51,7 @@
 
 
 .logout--btn{
-    min-width: 5.262rem;
+    min-width: 6.472rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -73,3 +68,32 @@
     color: #FFF;
     text-decoration: none;
 }
+
+.register--btn:hover{
+    text-decoration: none;
+    border: 1px solid #bfc6c5;
+    background-color: #FFF;
+    color: #4c9d96;
+}
+
+
+@media screen and (max-width: 767px) {
+    .register--btn{
+        min-width: 3.472rem;
+        width: 3.8rem;
+        font-size: .8rem;
+    }
+    
+    .login--btn{
+        min-width: 3.472rem;
+        width: 3.8rem;
+        font-size: .8rem;
+    }
+    
+    
+    .logout--btn{
+        min-width: 3.472rem;
+        width: 3.8rem;
+        font-size: .8rem;
+    }
+}    
