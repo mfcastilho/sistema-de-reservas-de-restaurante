@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import { useAuth } from "../../components/auth-provider";
@@ -15,6 +15,7 @@ const LoginPage = () => {
   
 
   const { login } = useAuth(); 
+
 
   const handleLogin = async () => {
     try {
@@ -34,11 +35,11 @@ const LoginPage = () => {
 
       
     } catch (error) {
-      console.log(error.response.data.error);
       toast.error(error.response.data.error);
     }
   };
 
+ 
   return (
     <div className="login">
       <ToastContainer />
@@ -68,6 +69,9 @@ const LoginPage = () => {
           >
             Logar
           </button>
+        </div>
+        <div className="link-to-registration--box">
+            <span>Não tem uma conta? <Link href="">Cadastre-se</Link> </span>
         </div>
       </div>
     </div>
