@@ -140,6 +140,7 @@ const ReservationPage = () => {
             setSelectedTable("");
             setSelectedTime("");
         } catch (error) {
+            if(error.response.status === 500) navigate("/error");
             toast.error(error.response.data.error);
         }
     };
