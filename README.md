@@ -33,7 +33,7 @@ Para o desenvolvimento do backend da aplicação, foi utilizado as seguintes tec
 1. Clone o repositório:
 
    ```
-   git clone https://github.com/seu-usuario/seu-repositorio.git
+   git clone https://github.com/mfcastilho/teste-tecnico-digiliza
    
 2. Navegue até a pasta do projeto:
 
