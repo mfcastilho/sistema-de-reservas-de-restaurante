@@ -32,7 +32,7 @@ Para o desenvolvimento do backend da aplicação, foi utilizado as seguintes tec
 
 1. Clone o repositório:
 
-   ```shell
+   ```
    git clone https://github.com/seu-usuario/seu-repositorio.git
    
 2. Navegue até a pasta do projeto:
@@ -54,12 +54,12 @@ npx sequelize db:create --env development
 5. Execute as migrações do banco de dados:
 
 ```
-npx sequelize-cli db:migrate
+npx sequelize-cli db:migrate --env development
 ```
 6. Execute os seeds para popular o banco de dados:
 
 ```
-npx sequelize-cli db:seed:all
+npx sequelize-cli db:seed:all --env development
 ```
 7. Inicie o servidor backend:
 
