@@ -33,7 +33,7 @@ Para o desenvolvimento do backend da aplicação, foi utilizado as seguintes tec
 1. Clone o repositório:
 
    ```
-   git clone https://github.com/seu-usuario/seu-repositorio.git
+   git clone https://github.com/mfcastilho/teste-tecnico-digiliza
    
 2. Navegue até a pasta do projeto:
 
@@ -206,5 +206,3 @@ npm test
 - **Descrição:** Permite que os administradores excluam uma reserva existente.
 - **Endpoint:** `/api/v1/admin/reservation/:id`
 - **Função:** Verificar se o administrador tem permissão para excluir a reserva e, se for válido, excluí-la do banco de dados.
-
-
