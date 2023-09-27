@@ -4,6 +4,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
 
+
 const baseURL = "http://localhost:3000/api/v1";
 
 const ClienteRegistrationPage = ()=>{
