@@ -19,17 +19,6 @@ module.exports = {
       define: {
         underscored: true, 
       }
-    },
-    production: {
-        dialect: process.env.PROD_DB_DIALECT,
-        host: process.env.PROD_DB_HOST,
-        username: process.env.PROD_DB_USER,
-        password: process.env.PROD_DB_PASS,
-        database: process.env.PROD_DB_NAME,
-        logging: false,
-        define: {
-          underscored: true, 
-        }
-    },
+    }
   };
   

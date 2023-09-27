@@ -13,11 +13,26 @@ Antes de iniciar, certifique-se de ter as seguintes ferramentas instaladas em su
 
 ## Backend
 
-O backend da aplicação é construído com JavaScript, Node.js, Express, Sequelize e PostgresSQL. Siga as etapas abaixo para configurar e executar o servidor backend:
+Para o desenvolvimento do backend da aplicação, foi utilizado as seguintes tecnologias:
+
+- **JavaScript** - Linguagem de programação principal.
+- **Node.js** - Ambiente de tempo de execução JavaScript.
+- **Express** - Framework Node.js para criação de APIs RESTful.
+- **Sequelize** - ORM (Object-Relational Mapping) para interagir com o banco de dados PostgreSQL.
+- **PostgresSQL** - Banco de dados relacional utilizado para armazenamento de dados.
+- **Joi** - Biblioteca de validação para validação de dados.
+- **Bcrypt** - Biblioteca para criptografar senhas.
+- **JWT (JSON Web Tokens)** - Para autenticação e autorização.
+- **date-fns** - Para manipulação de datas.
+- **uuid** - Para geração de identificadores únicos.
+- **Jest** - Framework de testes para testes de integração.
+- **SQLite** - Banco de dados em memória utilizado para testes com o Jest.
+  
+ Siga as etapas abaixo para configurar e executar o servidor backend:
 
 1. Clone o repositório:
 
-   ```shell
+   ```
    git clone https://github.com/seu-usuario/seu-repositorio.git
    
 2. Navegue até a pasta do projeto:
@@ -31,17 +46,20 @@ cd seu-repositorio
 cd backend
 npm install
 ```
-4. Configure o banco de dados PostgreSQL em backend/config/database.js.
+4. Crie o banco de dados de desenvolvimento PostgreSQL:
+ ```
+npx sequelize db:create --env development
 
+```
 5. Execute as migrações do banco de dados:
 
 ```
-npx sequelize-cli db:migrate
+npx sequelize-cli db:migrate --env development
 ```
 6. Execute os seeds para popular o banco de dados:
 
 ```
-npx sequelize-cli db:seed:all
+npx sequelize-cli db:seed:all --env development
 ```
 7. Inicie o servidor backend:
 
@@ -51,7 +69,18 @@ npm run dev
 - O servidor backend estará em execução em http://localhost:3000.
 
 ## Frontend
-O frontend da aplicação é desenvolvido com React. Siga as etapas abaixo para configurar e executar o frontend:
+Para o desenvolvimento do frontend da aplicação, foi utilizado as seguintes tecnologias:
+
+- **JavaScript** - Linguagem de programação principal.
+- **React** - Biblioteca de criação de interfaces de usuário.
+- **React Router Dom** - Para roteamento de páginas no aplicativo React.
+- **Bootstrap** - Framework de CSS para estilização.
+- **Axios** - Cliente HTTP para fazer solicitações à API do backend.
+- **SweetAlert** - Biblioteca para exibir pop-ups de notificação.
+- **react-toastify** - Para exibir notificações de toasts.
+- **react-icons** - Ícones populares como componentes React.
+- **date-fns** - Para manipulação de datas no frontend.
+- **jwt-decode** - Para decodificar tokens JWT no cliente. Siga as etapas abaixo para configurar e executar o frontend:
 
 1. Navegue até a pasta do projeto (se ainda não estiver na pasta do projeto):
 
@@ -177,5 +206,3 @@ npm test
 - **Descrição:** Permite que os administradores excluam uma reserva existente.
 - **Endpoint:** `/api/v1/admin/reservation/:id`
 - **Função:** Verificar se o administrador tem permissão para excluir a reserva e, se for válido, excluí-la do banco de dados.
-
-
