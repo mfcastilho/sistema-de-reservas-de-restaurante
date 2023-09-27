@@ -46,8 +46,11 @@ cd seu-repositorio
 cd backend
 npm install
 ```
-4. Configure o banco de dados PostgreSQL em backend/config/database.js.
+4. Crie o banco de dados de desenvolvimento PostgreSQL:
+ ```
+npx sequelize db:create --env development
 
+```
 5. Execute as migrações do banco de dados:
 
 ```
