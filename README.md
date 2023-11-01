@@ -1,4 +1,3 @@
-
 # Sistema de Reservas de Restaurante
 
 Este é um sistema de reservas para um restaurante, desenvolvido como parte de um desafio técnico para a empresa Digiliza.
